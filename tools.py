@@ -97,14 +97,16 @@ async def check():
     if not sessions:
         return
 
-    for s in sessions:
+    print(f"{len(sessions)} sessions were found!")
+
+    for ind, s in enumerate(sessions):
 
         # get tg client
         client = TelegramClient(get_session_file_path(s), credentials.API_ID,
                                 credentials.API_HASH, timeout=10, proxy=get_proxy())
 
-        await client.connect()
         try:
+            await client.connect()
             if not await client.is_user_authorized():
                 password = get_2fa(s)
                 if password:
@@ -133,4 +135,5 @@ async def check():
         except telethon.errors.rpcerrorlist.HashInvalidError:
             print(e)
         finally:
+            print(f"{ind + 1}/{len(sessions)} sessions checked!")
             await client.disconnect()
