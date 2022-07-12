@@ -105,6 +105,8 @@ def get_all_sessions_from_dir() -> list:
 
 
 async def check():
+    """check session"""
+
     create_report()
     sessions = get_all_sessions_from_dir()
     if not sessions:
