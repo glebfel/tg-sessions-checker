@@ -4,6 +4,7 @@ import os
 import pathlib
 import python_socks
 import telethon
+import shutil
 import credentials
 
 from telethon import TelegramClient
@@ -19,6 +20,18 @@ def get_session_file_path(session: str) -> str:
     """
     session_files_path = DIR_PATH + "/sessions"
     return f"{session_files_path}/{session}.session"
+
+
+def move_to_valid_folder(session):
+    """
+    move valid session file to the 'valid_sessions' folder with valid sessions files
+    :param session:
+    :return:
+    """
+    dst_path = DIR_PATH + '/valid_sessions'
+    if not os.path.exists(dst_path):
+        os.makedirs(dst_path)
+    shutil.copyfile(get_session_file_path(session), dst_path)
 
 
 def get_proxy() -> dict:
@@ -121,6 +134,7 @@ async def check():
             output = s + " is valid!\n\n"
             print(output)
             add_to_report(output)
+            move_to_valid_folder(s)
         except (telethon.errors.PhoneNumberBannedError,
                 telethon.errors.rpcerrorlist.UserDeactivatedBanError,
                 telethon.errors.rpcerrorlist.AuthKeyDuplicatedError,
@@ -132,6 +146,7 @@ async def check():
             output = s + " is valid!\n\n"
             print(output)
             add_to_report(output)
+            move_to_valid_folder(s)
         except telethon.errors.rpcerrorlist.HashInvalidError:
             print(e)
         finally:
