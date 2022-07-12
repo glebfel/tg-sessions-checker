@@ -22,6 +22,14 @@ def get_session_file_path(session: str) -> str:
     return f"{session_files_path}/{session}.session"
 
 
+def clean_valid_folder():
+    dst_path = DIR_PATH + '/valid_sessions/'
+    if os.path.exists(dst_path):
+        directory = os.fsencode(dst_path)
+        for file in os.listdir(directory):
+            os.remove(dst_path + file.decode("utf-8"))
+
+
 def move_to_valid_folder(session):
     """
     move valid session file to the 'valid_sessions' folder with valid sessions files
@@ -31,7 +39,7 @@ def move_to_valid_folder(session):
     dst_path = DIR_PATH + '/valid_sessions'
     if not os.path.exists(dst_path):
         os.makedirs(dst_path)
-    shutil.copyfile(get_session_file_path(session), dst_path)
+    shutil.copy(get_session_file_path(session), dst_path)
 
 
 def get_proxy() -> dict:
@@ -107,6 +115,7 @@ def get_all_sessions_from_dir() -> list:
 async def check():
     """check session"""
 
+    clean_valid_folder()
     create_report()
     sessions = get_all_sessions_from_dir()
     if not sessions:
