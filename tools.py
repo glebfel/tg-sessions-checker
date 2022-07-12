@@ -117,7 +117,7 @@ async def check():
                     add_to_report(output)
                     continue
 
-            a = await client.get_entity("https://t.me/telegram")
+            await client.get_entity("https://t.me/telegram")
             output = s + " is valid!\n\n"
             print(output)
             add_to_report(output)
