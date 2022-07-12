@@ -47,6 +47,8 @@ def get_proxy() -> dict:
     get proxy in TelegramClient format
     :return: dict with proxy settings
     """
+    if not credentials.PROXY:
+        return None
     proxy = credentials.PROXY.replace('http://', '').replace('@', ':')
     proxy_parts = proxy.split(':')
     return dict(proxy_type=python_socks.ProxyType.HTTP, addr=proxy_parts[2], port=int(proxy_parts[3]),
