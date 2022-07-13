@@ -118,7 +118,7 @@ async def check():
     if not sessions:
         return
 
-    print(f"{len(sessions)} sessions were found!")
+    print(f"{len(sessions)} sessions were found!\n")
 
     valid_sessions = []
     invalid_sessions = []
@@ -137,7 +137,7 @@ async def check():
                     await client.sign_in(password=password)
 
             await client.get_entity("https://t.me/telegram")
-            output = s + " is valid!\n\n"
+            output = s + " is valid!\n"
             print(output)
             valid_sessions.append(s)
             move_to_valid_folder(s)
@@ -145,18 +145,18 @@ async def check():
                 telethon.errors.rpcerrorlist.UserDeactivatedBanError,
                 telethon.errors.rpcerrorlist.AuthKeyDuplicatedError,
                 telethon.errors.rpcerrorlist.SessionRevokedError) as e:
-            output = s + " is not valid!" + "\nReason: " + str(e) + "\n\n"
+            output = s + " is not valid!" + "\nReason: " + str(e) + "\n"
             print(output)
             invalid_sessions.append(s)
         except telethon.errors.FloodWaitError as e:
-            output = s + " is valid!\n\n"
+            output = s + " is valid!\n"
             print(output)
             valid_sessions.append(s)
             move_to_valid_folder(s)
         except telethon.errors.rpcerrorlist.HashInvalidError:
             print(e)
         finally:
-            print(f"{ind + 1}/{len(sessions)} sessions checked!")
+            print(f"{ind + 1}/{len(sessions)} sessions checked!\n")
             await client.disconnect()
 
     create_report(valid_sessions, invalid_sessions)
