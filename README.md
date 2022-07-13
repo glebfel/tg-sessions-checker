@@ -19,16 +19,22 @@ How to get your own api_id and api_hash? Follow the next steps:
     4. Click on Create application at the end. Remember that your API hash is secret and Telegram won’t let you revoke it. Don’t post it anywhere!
     
    ◾  *Also, you can add proxy to use in validation process (it is recommended to use proxy from the same region as session accounts are) or you can simply left the string empty.*
+   
+After getting telegram api credentials:
+   
+    Add api_id and api_hash that you got to the API_ID and API_HASH varibles respectively in credentials.py file.
 
 **3. Install all required dependencies from requirements.txt file.**
 
 Using pip :
 
     pip install -r requirements.txt
+    
+**5. Create 'sessions' folder in the project directory root and add all session files you want to check.**   
 
-**4. Run run.py and follow instructions from the console if needed.**
+**6. Run run.py and follow instructions from the console if needed.**
 
-**5. After successful run: '/valid_sessions' folder and 'report.json' will be created:**
+**7. After successful run: '/valid_sessions' folder and 'report.json' will be created:**
 
     ◾ '/valid_sessions' folder contains all sessions which pass validation process.
        
