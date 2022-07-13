@@ -24,7 +24,7 @@ How to get your own api_id and api_hash? Follow the next steps:
 
 Using pip :
 
-    pip install -r requirements/requirements.txt
+    pip install -r requirements.txt
 
 **4. Run run.py and follow instructions from the console if needed.**
 
