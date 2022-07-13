@@ -29,11 +29,10 @@ def clean_valid_folder():
             os.remove(dst_path + file.decode("utf-8"))
 
 
-def move_to_valid_folder(session):
+def move_to_valid_folder(session: str):
     """
     move valid session file to the 'valid_sessions' folder with valid sessions files
-    :param session:
-    :return:
+    :param session: session file-name
     """
     dst_path = DIR_PATH + '/valid_sessions'
     if not os.path.exists(dst_path):
