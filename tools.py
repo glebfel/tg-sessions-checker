@@ -22,6 +22,7 @@ def get_session_file_path(session: str) -> str:
 
 
 def clean_valid_folder():
+    """clean folder with valid sessions after each run of the program"""
     dst_path = DIR_PATH + '/valid_sessions/'
     if os.path.exists(dst_path):
         directory = os.fsencode(dst_path)
