@@ -57,6 +57,8 @@ def get_proxy() -> dict:
 def create_report(valid_sessions: list, invalid_sessions: list):
     """
     create output report in report.json file
+    :param valid_sessions: names of valid session files
+    :param invalid_sessions: names of invalid session files
     """
     report_path = DIR_PATH + "/report.json"
 
@@ -76,8 +78,8 @@ def create_report(valid_sessions: list, invalid_sessions: list):
 def get_2fa(session: str) -> str:
     """
     extract 2fa code from file (if exists) of given session
-    :param session:
-    :return:
+    :param session: name of session file
+    :return: 2fa code for the given session file
     """
     # find json config file of given phone number
     path = DIR_PATH + f"/tg_sessions/{session}.json"
