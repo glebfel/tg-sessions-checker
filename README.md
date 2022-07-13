@@ -1,5 +1,7 @@
 # TGSessionsChecker
 
+TGSessionsChecker is a tool that contains functionality to check the validity of telegram user session files (.session)
+
 ## How to use?
 
 **1. Clone this repo.**
