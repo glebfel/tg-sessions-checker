@@ -4,7 +4,7 @@
 
 **1. Clone this repo.**
 
-    git clone https://github.com/AtsushiSakai/PythonRobotics.git
+    git clone https://github.com/glebfel/TGSessionsChecker.git
 
 **2. Add your own telegram credentials (api_id and api_hash) to credentials.py file.**
 
