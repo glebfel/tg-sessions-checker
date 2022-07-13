@@ -28,8 +28,8 @@ Using pip :
 
 **4. Run run.py and follow instructions from the console if needed.**
 
-**5. After successful run, 'valid_sessions' folder and 'report.json' will be created:**
+**5. After successful run, '/valid_sessions' folder and 'report.json' will be created:**
 
-    ◾ 'valid_sessions' folder contains all sessions which pass validation process.
+    ◾ '/valid_sessions' folder contains all sessions which pass validation process.
        
     ◾ 'report.json' contains all process logs: session name + reason of success or denial in validation process.
