@@ -143,8 +143,10 @@ async def check():
             move_to_valid_folder(s)
         except (telethon.errors.PhoneNumberBannedError,
                 telethon.errors.rpcerrorlist.UserDeactivatedBanError,
+                telethon.errors.rpcerrorlist.UserDeactivatedError,
                 telethon.errors.rpcerrorlist.AuthKeyDuplicatedError,
-                telethon.errors.rpcerrorlist.SessionRevokedError) as e:
+                telethon.errors.rpcerrorlist.SessionRevokedError,
+                telethon.errors.rpcerrorlist.AuthKeyUnregisteredError) as e:
             output = s + " is not valid!" + "\nReason: " + str(e) + "\n"
             print(output)
             invalid_sessions.append(s)
