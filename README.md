@@ -30,12 +30,18 @@ Using pip :
 
     pip install -r requirements.txt
     
-**5. Create 'sessions' folder in the project directory root and add all session files you want to check.**   
+**4. Create 'sessions' folder in the project directory root and add all session files you want to check.**   
 
-**6. Run run.py and follow instructions from the console if needed.**
+![Безымянный1](https://user-images.githubusercontent.com/65199250/178754000-e92df72e-ece6-43fe-9735-143b36de4e95.png)
 
-**7. After successful run: '/valid_sessions' folder and 'report.json' will be created:**
+**5. Run run.py and follow instructions from the console if needed.**
+
+**6. After successful run: '/valid_sessions' folder and 'report.json' will be created:**
 
     ◾ '/valid_sessions' folder contains all sessions which pass validation process.
-       
+      
     ◾ 'report.json' contains all process logs: session name + reason of success or denial in validation process.
+ 
+**Example of report file:**
+    
+![Безымянный](https://user-images.githubusercontent.com/65199250/178754676-4ddf7c5e-d388-489a-8f3f-c29efb753f0d.png)
