@@ -2,7 +2,11 @@
 
 ## How to use?
 
-**1. Add your own telegram credentials (api_id and api_hash) to credentials.py file.**
+**1. Clone this repo.**
+
+    git clone https://github.com/AtsushiSakai/PythonRobotics.git
+
+**2. Add your own telegram credentials (api_id and api_hash) to credentials.py file.**
 
 How to get your own api_id and api_hash? Follow the next steps:
 
@@ -16,11 +20,15 @@ How to get your own api_id and api_hash? Follow the next steps:
     
    ◾  *Also, you can add proxy to use in validation process (it is recommended to use proxy from the same region as session accounts are) or you can simply left the string empty.*
 
-**2. Install all required dependencies from requirements.txt file.**
+**3. Install all required dependencies from requirements.txt file.**
 
-**3. Run run.py and follow instructions from the console if needed.**
+Using pip :
 
-**4. After successful run, 'valid_sessions' folder and 'report.json' will be created:**
+      pip install -r requirements/requirements.txt
+
+**4. Run run.py and follow instructions from the console if needed.**
+
+**5. After successful run, 'valid_sessions' folder and 'report.json' will be created:**
 
      ◾ 'valid_sessions' folder contains all sessions which pass validation process.
        
