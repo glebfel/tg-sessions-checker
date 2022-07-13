@@ -137,11 +137,6 @@ async def check():
                 password = get_2fa(s)
                 if password:
                     await client.sign_in(password=password)
-                else:
-                    output = s + " is not valid!" + "\nReason: 2fa code is required\n\n"
-                    print(output)
-                    add_to_report(output)
-                    continue
 
             await client.get_entity("https://t.me/telegram")
             output = s + " is valid!\n\n"
@@ -152,7 +147,7 @@ async def check():
                 telethon.errors.rpcerrorlist.UserDeactivatedBanError,
                 telethon.errors.rpcerrorlist.AuthKeyDuplicatedError,
                 telethon.errors.rpcerrorlist.SessionRevokedError) as e:
-            output = s + " is not valid!" + "\nReason:" + str(e) + "\n\n"
+            output = s + " is not valid!" + "\nReason: " + str(e) + "\n\n"
             print(output)
             add_to_report(output)
         except telethon.errors.FloodWaitError as e:
