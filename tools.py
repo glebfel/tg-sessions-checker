@@ -6,7 +6,6 @@ import python_socks
 import telethon
 import shutil
 import credentials
-
 from telethon import TelegramClient
 
 DIR_PATH = str(pathlib.Path(__file__).parent)
