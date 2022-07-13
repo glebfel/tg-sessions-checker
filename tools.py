@@ -54,26 +54,23 @@ def get_proxy() -> dict:
                 username=proxy_parts[0], password=proxy_parts[1])
 
 
-def create_report():
+def create_report(valid_sessions: list, invalid_sessions: list):
     """
     create output report in report.json file
-    :return:
     """
     report_path = DIR_PATH + "/report.json"
 
     with open(report_path, "w", encoding="utf-8") as f:
-        f.write(f"Start time: {datetime.datetime.now()}\n")
-
-
-def add_to_report(string):
-    """
-    add info about phone in report.json file
-    :return:
-    """
-    report_path = DIR_PATH + "/report.json"
-
-    with open(report_path, "a+", encoding="utf-8") as f:
-        f.write(f"{string}\n")
+        f.write(f"Report time: {datetime.datetime.now()}\n")
+        if valid_sessions:
+            f.write(f"Valid sessions: {datetime.datetime.now()}\n")
+            for i in valid_sessions:
+                f.write(i + "\n")
+            f.write(f"\n")
+        if invalid_sessions:
+            f.write(f"Invalid sessions: {datetime.datetime.now()}\n")
+            for i in invalid_sessions:
+                f.write(i + "\n")
 
 
 def get_2fa(session: str) -> str:
@@ -117,12 +114,14 @@ async def check():
     """check session"""
 
     clean_valid_folder()
-    create_report()
     sessions = get_all_sessions_from_dir()
     if not sessions:
         return
 
     print(f"{len(sessions)} sessions were found!")
+
+    valid_sessions = []
+    invalid_sessions = []
 
     for ind, s in enumerate(sessions):
 
@@ -140,7 +139,7 @@ async def check():
             await client.get_entity("https://t.me/telegram")
             output = s + " is valid!\n\n"
             print(output)
-            add_to_report(output)
+            valid_sessions.append(s)
             move_to_valid_folder(s)
         except (telethon.errors.PhoneNumberBannedError,
                 telethon.errors.rpcerrorlist.UserDeactivatedBanError,
@@ -148,14 +147,16 @@ async def check():
                 telethon.errors.rpcerrorlist.SessionRevokedError) as e:
             output = s + " is not valid!" + "\nReason: " + str(e) + "\n\n"
             print(output)
-            add_to_report(output)
+            invalid_sessions.append(s)
         except telethon.errors.FloodWaitError as e:
             output = s + " is valid!\n\n"
             print(output)
-            add_to_report(output)
+            valid_sessions.append(s)
             move_to_valid_folder(s)
         except telethon.errors.rpcerrorlist.HashInvalidError:
             print(e)
         finally:
             print(f"{ind + 1}/{len(sessions)} sessions checked!")
             await client.disconnect()
+
+    create_report(valid_sessions, invalid_sessions)
