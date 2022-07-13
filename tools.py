@@ -61,14 +61,14 @@ def create_report(valid_sessions: list, invalid_sessions: list):
     report_path = DIR_PATH + "/report.json"
 
     with open(report_path, "w", encoding="utf-8") as f:
-        f.write(f"Report time: {datetime.datetime.now()}\n")
+        f.write(f"Report time: {datetime.datetime.now()}\n\n")
         if valid_sessions:
-            f.write(f"Valid sessions: {datetime.datetime.now()}\n")
+            f.write(f"Valid sessions:\n")
             for i in valid_sessions:
                 f.write(i + "\n")
             f.write(f"\n")
         if invalid_sessions:
-            f.write(f"Invalid sessions: {datetime.datetime.now()}\n")
+            f.write(f"Invalid sessions:\n")
             for i in invalid_sessions:
                 f.write(i + "\n")
 
