@@ -82,7 +82,7 @@ def get_2fa(session: str) -> str:
     :return: 2fa code for the given session file
     """
     # find json config file of given phone number
-    path = DIR_PATH + f"/tg_sessions/{session}.json"
+    path = DIR_PATH + f"/sessions/{session}.json"
     if not os.path.isfile(path):
         print(f"Config file for {session} is absent!")
         return None
