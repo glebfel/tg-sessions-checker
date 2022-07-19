@@ -102,7 +102,7 @@ def get_all_sessions_from_dir() -> list:
     """
     sessions = []
     if not os.path.exists(DIR_PATH + '/sessions'):
-        print("'sessions' folder doesn't exists!")
+        print("'sessions' folder doesn't exists! Create it and add sessions you want to check!")
         return None
     directory = os.fsencode(DIR_PATH + '/sessions')
     for file in os.listdir(directory):
