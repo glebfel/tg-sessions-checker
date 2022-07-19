@@ -89,6 +89,9 @@ def get_2fa(session: str) -> str:
     with open(path, encoding='utf-8') as f:
         content = f.read()
     data = json.loads(content)
+    if 'twoFA' not in data:
+        print(f"TwoFA code for {session} is absent in config file!")
+        return None
     return data['twoFA']
 
 
