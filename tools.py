@@ -91,7 +91,7 @@ def get_2fa(session: str) -> str:
     try:
         data = json.loads(content)
     except Exception:
-        print(f"Config file for {session} is broken!")
+        print(f"Config file for {session} is broken or empty!")
         return None
     if 'twoFA' not in data:
         print(f"TwoFA code for {session} is absent in config file!")
